@@ -14,9 +14,12 @@ function convertToObject(sourceString) {
     .filter((element) => element !== '')
     .map((element) => {
       const temp = element.split(':');
-      const [key, value] = [temp[0].trim(), temp[1].trim()];
 
-      newObject[key] = value;
+      if (temp.length === 2) {
+        const [key, value] = temp.map((newElement) => newElement.trim());
+
+        newObject[key] = value;
+      }
     });
 
   return newObject;
